@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta informations of web page. -->
+  <meta charset="UTF-8" />
+  <meta name="description" content="Home page of my portfolio" />
+  <meta name="keyword" content="portfolio, cv, blogs, html portfolio, css, html, javascript" />
+  <meta name="author" content="Anish Shrestha" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- External CSS and JS link.  -->
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <!-- Adding Icon library to the webpage. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
+
+
+  <title>Products</title>
+</head>
+
+<body>
+  <!-- A navigation bar that slides from the right side of the web page. -->
+  <aside class="sideBar" id="sideBar">
+    <a href="javascript:void(0)" class="close" onclick="closeNav()">&times;</a>
+
+    <ul class="sidebar-nav">
+      <li class="nav-item">
+        <a href="../index.html" class="nav-link">
+          <i class="fas fa-house"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link">
+          <i class="fas fa-box"></i>
+          <span>Products</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="suppliers.html" class="nav-link">
+          <i class="fas fa-house-user"></i>
+          <span>Suppliers</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="customers.html" class="nav-link">
+          <i class="fas fa-users"></i>
+          <span>Customers</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="purchase.html" class="nav-link">
+          <i class="fas fa-dollar"></i>
+          <span>Purchase</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="invoice.html" class="nav-link">
+          <i class="far fa-file-lines"></i>
+          <span>Invoice</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="report.html" class="nav-link">
+          <i class="fas fa-chart-line"></i>
+          <span>Report</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="help.html" class="nav-link">
+          <i class="fas fa-question"></i>
+          <span>Help</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Parts of the webpage other than the side navigation bar.  -->
+
+  <!-- Header of webpage.  -->
+
+  <!-- An icon which when clicked on slides in the navigation bar.  -->
+  <div class="openSideNav" id="openSideNav">
+    <span style="
+          font-size: 36px;
+          display: inline;
+          float: left;
+          color: rgb(255, 255, 255);
+          align-content: left;
+          cursor: pointer;
+          top: 0;
+          margin: 0.6rem 0 0 1rem;
+        " onclick="openNav()">&#9776;</span>
+
+    <div class="user-menu">
+      <div class="user" onclick="dropdown()">
+        <div class="profile-image">
+          <img src="../images/1.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dropdown" class="dropdown" style="display: none;">
+    <div class="user-intro">
+      <div class="profile-image">
+        <img src="../images/1.jpg" alt="" />
+      </div>
+
+      <div class="user-info">
+        <span>Millie</span>
+        <p>lakhanthapa@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="edit-profile"><i class="fas fa-pen"></i> Edit profile</div>
+
+    <div class="profile-list">
+      <ul>
+        <li class="profile-menu">
+          <a href="accountSettings.html">
+            <i class="fas fa-user"></i>
+            <span>Account</span>
+          </a>
+        </li>
+
+        <!-- <li class="dropdown-menu">
+                    <hr>
+                </li>
+     -->
+        <li class="profile-menu">
+          <a href="accountSettings.html">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+
+        <!-- <li class="dropdown-menu">
+                    <hr>
+                </li> -->
+
+        <li class="profile-menu">
+          <a href="accountSettings.html">
+            <i class="fas fa-sign-out"></i>
+            <span>Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="main" onclick="closeDropdown()">
+    <div class="table-container">
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th>SN</th>
+            <th>Name</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Supplier</th>
+            <!-- <th>Start date</th>
+            <th>Salary</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tiger Nixon</td>
+            <td>System Architect</td>
+            <td>Edinburgh</td>
+            <td>61</td>
+            <td>2011-04-25</td>
+            <!-- <td>$320,800</td> -->
+          </tr>
+          <tr>
+            <td>Garrett Winters</td>
+            <td>Accountant</td>
+            <td>Tokyo</td>
+            <td>63</td>
+            <td>2011-07-25</td>
+            <!-- <td>$170,750</td> -->
+          </tr>
+          <tr>
+            <td>Ashton Cox</td>
+            <td>Junior Technical Author</td>
+            <td>San Francisco</td>
+            <td>66</td>
+            <td>2009-01-12</td>
+            <!-- <td>$86,000</td>  -->
+          </tr>
+          <tr>
+            <td>Cedric Kelly</td>
+            <td>Senior Javascript Developer</td>
+            <td>Edinburgh</td>
+            <td>22</td>
+            <td>2012-03-29</td>
+            <!-- <td>$433,060</td> -->
+          </tr>
+         
+         
+        </tbody>
+      </table>
+    </div>
+
+    <div id="addButton">
+      <button class="add" onclick="addProduct()">
+        <i class="fas fa-add"></i>
+        <span>Add Product</span>
+      </button>
+    </div>
+
+    <div id="product-form">
+      <form method="POST">
+        <span class="title">Add Product</span>
+        <div class="add-field">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="add-field">
+          <label for="price">Unit Price:</label>
+          <input type="text" id="price" name="price" required />
+        </div>
+
+        <div class="add-field">
+          <label for="supplier_ID">Supplier:</label>
+          <select name="supplier_ID" id="supplier_ID">
+            <option value="5">5</option>
+            <option value="5">4</option>
+            <option value="5">3</option>
+            <option value="5">2</option>
+            <option value="5">1</option>
+          </select>
+        </div>
+
+        <div class="add-field">
+          <label for="quantity">Quantity:</label>
+          <input type="text" id="quantity" name="quantity" required />
+        </div>
+
+        <div class="add-button">
+          <input type="submit" value="Add Product" class="add" />
+          <input type="button" value="Cancel" class="add" onclick="closeAddMenu()" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="/static/js/main.js"></script> -->
+  <script src="../main.js"></script>
+</body>
+
+</html>

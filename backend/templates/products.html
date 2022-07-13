@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="table-container">
+    <table id="example" class="table table-striped" style="width:100%">
+      <thead>
+        <tr>
+          <th>SN</th>
+          <th>Name</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Supplier</th>
+          <!-- <th>Start date</th>
+          <th>Salary</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tiger Nixon</td>
+          <td>System Architect</td>
+          <td>Edinburgh</td>
+          <td>61</td>
+          <td>2011-04-25</td>
+          <!-- <td>$320,800</td> -->
+        </tr>
+        <tr>
+          <td>Garrett Winters</td>
+          <td>Accountant</td>
+          <td>Tokyo</td>
+          <td>63</td>
+          <td>2011-07-25</td>
+          <!-- <td>$170,750</td> -->
+        </tr>
+        <tr>
+          <td>Ashton Cox</td>
+          <td>Junior Technical Author</td>
+          <td>San Francisco</td>
+          <td>66</td>
+          <td>2009-01-12</td>
+          <!-- <td>$86,000</td>  -->
+        </tr>
+        <tr>
+          <td>Cedric Kelly</td>
+          <td>Senior Javascript Developer</td>
+          <td>Edinburgh</td>
+          <td>22</td>
+          <td>2012-03-29</td>
+          <!-- <td>$433,060</td> -->
+        </tr>
+       
+       
+      </tbody>
+    </table>
+  </div>
+
+  <div id="addButton">
+    <button class="add" onclick="addProduct()">
+      <i class="fas fa-add"></i>
+      <span>Add Product</span>
+    </button>
+  </div>
+
+  <div id="product-form">
+    <form method="POST">
+      <span class="title">Add Product</span>
+      <div class="add-field">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <div class="add-field">
+        <label for="price">Unit Price:</label>
+        <input type="text" id="price" name="price" required />
+      </div>
+
+      <div class="add-field">
+        <label for="supplier_ID">Supplier:</label>
+        <select name="supplier_ID" id="supplier_ID">
+          <option value="5">5</option>
+          <option value="5">4</option>
+          <option value="5">3</option>
+          <option value="5">2</option>
+          <option value="5">1</option>
+        </select>
+      </div>
+
+      <div class="add-field">
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity" required />
+      </div>
+
+      <div class="add-button">
+        <input type="submit" value="Add Product" class="add" />
+        <input type="button" value="Cancel" class="add" onclick="closeAddMenu()" />
+      </div>
+    </form>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+<script>
+  // add form for product
+function addProduct() {
+  document.getElementById("product-form").style.display="flex";
+  document.getElementById("example_wrapper").style.display="none";
+  document.getElementById("addButton").style.display="none";
+}
+
+function closeAddMenu() {
+  document.getElementById("product-form").style.display="none";
+  document.getElementById("addButton").style.display="flex";
+  document.getElementById("example_wrapper").style.display="inline";
+}
+</script>
+
+{% endblock %}

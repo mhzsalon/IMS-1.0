@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta informations of web page. -->
+    <meta cFharset="UTF-8">
+    <meta name="description" content="Home page of my portfolio">
+    <meta name="keyword" content="portfolio, cv, blogs, html portfolio, css, html, javascript">
+    <meta name="author" content="Anish Shrestha">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- External CSS and JS link.  -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/main.js' %}"></script>
+    <!-- Adding Icon library to the webpage. -->
+    <link rel="stylesheet"
+        href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet"
+        href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' %}"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Login - IMS</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main-container" id="blur">
+        <div class="wrapper">
+            <div class="title-text" id="signIn">
+                <div class="title sign-in">Sign In</div>
+            </div>
+
+            <div class="title-text" id="signUp">
+                <div class="title sign-in">Sign Up</div>
+            </div>
+
+            <div class="form-container" id="frontface">
+                <div class="frontface" id="front">
+                    <form action="" class="login" method="post">
+                        {% csrf_token %}
+                        <div class="field">
+                            <input type="text" placeholder="Username" name="username" required>
+                        </div>
+                        <div class="field">
+                            <input type="password" placeholder="Password" name="password" required>
+                        </div>
+                        {% for message in messages %}
+                        <span class="errorMessage" style="color: red;
+                            font-size: 13px; margin-top:5px;"> {{ message }} </span>
+                        {% endfor %}
+                        <div class="link">
+                            <a href="#">Forgot password?</a>
+                        </div>
+                        <div class="field">
+                            <input type="submit" value="Sign In">
+                        </div>
+                        <div class="signup-link">Not a member? <a href="#" onclick="signUp()">Signup now</a></div>
+                    </form>
+                </div>
+            </div>
+            <div class="backface" id="backface">
+                <form action="" class="login" method="post">
+                    {% csrf_token %}
+                    <div class="field" id="names">
+                        <input type="text" placeholder="First name" name="first_name" required
+                            style="margin-right: 10px;">
+                        <input type="text" placeholder="Last name" name="last_name" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Username" name="username" required>
+                    </div>
+                    <div class="field">
+                        <input type="email" placeholder="Email" name="email" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Address" name="address" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Phone number" name="address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" name="password" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Confirm Password" name="password" required>
+                    </div>
+                    <div class="field">
+                        <input type="submit" value="Sign Up" onclick="toogle()">
+                    </div>
+                    <div class="signup-link">Already a member? <a href="#" onclick="signIn()">Signin</a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

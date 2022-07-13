@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta informations of web page. -->
+    <meta cFharset="UTF-8">
+    <meta name="description" content="Home page of my portfolio">
+    <meta name="keyword" content="portfolio, cv, blogs, html portfolio, css, html, javascript">
+    <meta name="author" content="Anish Shrestha">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- External CSS and JS link.  -->
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <script src="../main.js"></script>
+    <!-- Adding Icon library to the webpage. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Anish Shrestha - Under Graduate IT Student</title>
+
+    <style>
+        *{ 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body{
+            display: grid;
+            height: 100%;
+            width: 100%;
+            place-items: center;
+            background-image: url(../images/Blue_to_purple_gradient_header.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+
+<body>
+    
+   <div class="wrapper" style="width: 420PX;">
+    <div class="title-text">
+        <div class="title sign-up">Sign up</div>
+    </div>
+    <div class="form-container">
+        <div class="frontface">
+            <form action="post" class="login">
+                <div class="field" id="names" >
+                    <input type="text" placeholder="First name" name="first_name" required style="margin-right: 10px;">
+                    <input type="text" placeholder="Last name" name="last_name" required>
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Username" name="username" required>
+                </div>
+                <div class="field">
+                    <input type="email" placeholder="Email" name="email" required>
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Confirm Password" name="password" required>
+                </div>
+                <div class="field">
+                    <input type="submit" value="Signin">
+                </div>
+            </form>
+        </div>
+    </div>
+   </div>
+
+
+</body>
+
+</html>
