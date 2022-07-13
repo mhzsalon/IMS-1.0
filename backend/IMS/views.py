@@ -75,7 +75,7 @@ def login(request):
 
         if users is not None:
             auth.login(request, users)
-            messages.error(request, "Welcome to IMS Dashboard :)")
+            # messages.error(request, "Welcome to IMS Dashboard :)")
             return redirect('dashboard/')
         # elif username != dbUser:
         #     messages.error(request, "The user doesn't exit!")
