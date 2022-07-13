@@ -5,7 +5,8 @@ from django.contrib.auth. models import User, auth
 from django.contrib import messages
 from django.views import View
 
-import IMS
+from .models import Products
+from .forms import addProductForm
 
 # Create your views here.
 
@@ -24,7 +25,7 @@ def login(request):
 
         if users is not None:
             auth.login(request, users)
-            messages.error(request, "Welcome to IMS Dashboard :)")
+            # messages.error(request, "Welcome to IMS Dashboard :)")
             return redirect('dashboard/')
         # elif username != dbUser:
         #     messages.error(request, "The user doesn't exit!")
@@ -45,15 +46,18 @@ def dashboard(request):
 
 
 def products(request):
-    if request.method == "POST":
-        name = request.POST["name"]
-        price = request.POST["price"]
-        quantity = request.POST["quantity"]
-        supplier = request.POST["supplier_ID"]
-        
+    form = addProductForm()
+    
 
-    else:
-        return render(request, 'products.html', {'title': 'Products - IMS'})
+    if request.method == "POST":
+        form = addProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('../products/')
+
+    productData = Products.objects.all()
+    context = {'form': form, 'title': 'Products - IMS', 'data': productData}
+    return render(request, 'products.html', context)
 
 
 def logout(request):
