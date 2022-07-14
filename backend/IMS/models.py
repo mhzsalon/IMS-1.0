@@ -26,6 +26,8 @@ class Purchases(models.Model):
     purchase_date = models.DateField(auto_now=True)
     quantity = models.IntegerField(default=1)
     purchase_price = models.FloatField(default=1.0)
+    def __str__(self):
+        return self.product_id_id
 
 
 class Invoice_details(models.Model):

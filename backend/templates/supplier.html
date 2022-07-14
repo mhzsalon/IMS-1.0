@@ -1,0 +1,80 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="table-container">
+    <table id="example" class="table table-striped" style="width:100%">
+      <thead>
+        <tr>
+          <th>SN</th>
+          <th>Supplier ID</th>
+          <th>Supplier number</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for supplier in supplier_data %}
+        <tr>
+          <td>{{ supplier.id }}</td>
+          <td>{{ supplier.supplier_name }}</td>
+          <td>{{ supplier.supplier_number}}</td>
+          <td>{{ supplier.email}} </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div id="addButton">
+    <button class="add" onclick="addProduct()">
+      <i class="fas fa-add"></i>
+      <span>Add Supplier</span>
+    </button>
+  </div>
+  
+  <div id="product-form">
+  
+    <form method="POST">
+      {% csrf_token %}
+      <span class="title">Add Purchase</span>
+        <div class="add-field">
+          <label for="price">Supplier name:</label>
+          {{ form.supplier_name }}
+        </div>
+  
+        <div class="add-field">
+          <label for="supplier_ID">Supplier number:</label>
+          {{ form.supplier_number}}        
+        </div>
+  
+        <div class="add-field">
+          <label for="quantity">Email:</label>
+          {{ form.email }}        
+        </div>
+  
+        <div class="add-button">
+          <input type="submit" value="Add Supplier" class="add" />
+          <input type="button" value="Cancel" class="add" onclick="closeAddMenu()" />
+        </div>
+    </form>
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  
+  <script>
+    // add form for product
+    function addProduct() {
+      document.getElementById("product-form").style.display = "flex";
+      document.getElementById("example_wrapper").style.display = "none";
+      document.getElementById("addButton").style.display = "none";
+    }
+  
+    function closeAddMenu() {
+      document.getElementById("product-form").style.display = "none";
+      document.getElementById("addButton").style.display = "flex";
+      document.getElementById("example_wrapper").style.display = "inline";
+    }
+  </script>
+  
+{% endblock %}
