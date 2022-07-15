@@ -550,3 +550,35 @@ form .field input[type="submit"] {
 #example_paginate, #example_info {
   display: none;
 }
+
+
+/* invoice form */
+.invoiceForm{
+  flex-direction: column;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+  background-color:rgb(245, 243, 243);
+  width: 80%;
+  padding: 20px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.input-list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 90%;
+}
+
+.buttons{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.form-title{
+  text-align: center;
+  color: #3e6990;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 50px;
+}

@@ -4,8 +4,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth. models import auth
 from django.contrib import messages
 
-from .models import Products, Purchases, Suppliers
-from .forms import addProductForm, addPurchaseForm, addSupplierForm
+from .models import Invoice_details, Invoices, Products, Purchases, Suppliers
+from .forms import addInvoiceForm, addProductForm, addPurchaseForm, addSupplierForm
 
 # Create your views here.
 
@@ -87,3 +87,16 @@ def supplier(request):
     supplierData = Suppliers.objects.all()
     context = {'form': form, 'title': 'Supplier - IMS', 'supplier_data': supplierData}
     return render(request, 'supplier.html', context)
+
+def invoice(request):
+    form = addInvoiceForm()
+
+    if request.method == 'POST':
+        form = addInvoiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('../invoice/')
+    
+    invoiceData = Invoice_details.objects.all()
+    context = {'form': form, 'title': 'Invoice - IMS', 'invoice_data': invoiceData}
+    return render(request, 'invoice.html', context)

@@ -1,5 +1,6 @@
+from dataclasses import fields
 from django.forms import ModelForm
-from .models import Products, Purchases, Suppliers
+from .models import Invoice_details, Invoices, Products, Purchases, Suppliers
 
 class addProductForm(ModelForm):
     class Meta:
@@ -15,3 +16,8 @@ class addSupplierForm(ModelForm):
     class Meta:
         model = Suppliers
         fields = ['supplier_name', 'supplier_number', 'email']
+
+class addInvoiceForm(ModelForm):
+    class Meta:
+        model = Invoice_details
+        fields = ['ordered_quantity', 'line_total', 'invoice_id', 'product_id']

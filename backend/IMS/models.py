@@ -35,7 +35,10 @@ class Invoice_details(models.Model):
     product_id = models.ForeignKey('Products', on_delete=models.CASCADE)
     ordered_quantity = models.IntegerField(default=1)
     line_total = models.FloatField(default=1.0)
-
+    def __str__(self):
+        return self.product_id_id
+   
+    
 
 class Customers(models.Model):
     customer_name = models.CharField(max_length=100)
