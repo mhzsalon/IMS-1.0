@@ -8,6 +8,13 @@
               <div class="form-title">
                 <p>Add Invoice</p>
               </div>
+
+              <div class="input-list">
+                <div class="input_field">
+                  <label for="price">Invoice ID:</label>
+                  {{ form.invoice_id }}
+                </div>
+              
                 <div class="input-list">
                   <div class="input_field">
                     <label for="price">Product ID:</label>
@@ -44,15 +51,15 @@
               <tbody>
                 {% for invoice in invoice_data %}
                 <tr>
-                  <td>{{ invoice.invoice_id_id }}</td>
-                  <td>{{ invoice.product_id_id}}</td>
+                  <td>{{ invoice.invoice_id_id}}</td>
+                  <td>{{ invoice.product_id}}</td>
                   <td>{{ invoice.ordered_quantity}}</td>
                   <td>{{ invoice.line_total}} </td>
                 </tr>
                 {% endfor %}
               </tbody>
             </table>
-          </div>
+        </div>
 
           <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
           <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

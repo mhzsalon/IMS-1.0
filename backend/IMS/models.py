@@ -26,8 +26,8 @@ class Purchases(models.Model):
     purchase_date = models.DateField(auto_now=True)
     quantity = models.IntegerField(default=1)
     purchase_price = models.FloatField(default=1.0)
-    def __str__(self):
-        return self.product_id_id
+    # def __str__(self):
+    #     return self.product_id_id
 
 
 class Invoice_details(models.Model):
@@ -35,9 +35,10 @@ class Invoice_details(models.Model):
     product_id = models.ForeignKey('Products', on_delete=models.CASCADE)
     ordered_quantity = models.IntegerField(default=1)
     line_total = models.FloatField(default=1.0)
-    def __str__(self):
-        return self.product_id_id
-   
+    # def __str__(self):
+    #     return self.product_id_id
+    # def __int__(self):
+    #     return self.invoice_id_id
     
 
 class Customers(models.Model):
@@ -51,3 +52,5 @@ class Invoices(models.Model):
     invoice_date = models.DateField(auto_now=True)
     customer_id = models.ForeignKey('Customers', on_delete=models.CASCADE)
     total = models.FloatField(default=1.0)
+    def __int__(self):
+        return self.id
