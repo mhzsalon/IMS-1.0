@@ -1,10 +1,13 @@
 
+from datetime import datetime
+from multiprocessing import context
 from urllib import request
+from xmlrpc.client import DateTime
 from django.shortcuts import render, redirect
 from django.contrib.auth. models import auth
 from django.contrib import messages
 
-from .models import Invoice_details, Invoices, Products, Purchases, Suppliers
+from .models import Customers, Invoice_details, Invoices, Products, Purchases, Suppliers
 from .forms import addInvoiceForm, addProductForm, addPurchaseForm, addSupplierForm
 
 # Create your views here.
@@ -88,15 +91,52 @@ def supplier(request):
     context = {'form': form, 'title': 'Supplier - IMS', 'supplier_data': supplierData}
     return render(request, 'supplier.html', context)
 
-def invoice(request):
-    form = addInvoiceForm()
+# def invoice(request):
+#     form = addInvoiceForm()
+#     mainForm =formGenerate()
+#     if request.method == 'POST':
+#         print("I am here")
+#         form = addInvoiceForm(request.POST)
+#         print("I am here 2")
 
-    if request.method == 'POST':
-        form = addInvoiceForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('../invoice/')
+#         #creating invoices
+
+#         # all_cus_details = Customers.objects.all()
+
+#         # for i in all_cus_details:
+#         #     print(i)
+#         #     print("The id are: ",i.id)
+
+#         # for i in all_cus_details:
+#         #     Invoices.objects.create(
+#         #         invoice_date = datetime.now(),
+#         #         customer_id = id,
+#         #         total = 1.0,
+#         #     )
+#         # all_cus_details = Invoices.objects.all()
+
+#         # for i in all_cus_details:
+#         #     Invoice_details.objects.create(
+#         #         invoice_id=i.id
+#         #     )
+#         #     # print(i.id)
+#         if form.is_valid(): 
+            
+#             print("I am here 3")
+#             form.save()
+#             return redirect('../invoice/')
     
-    invoiceData = Invoice_details.objects.all()
-    context = {'form': form, 'title': 'Invoice - IMS', 'invoice_data': invoiceData}
-    return render(request, 'invoice.html', context)
+#     invoiceData = Invoice_details.objects.all()
+#     context = {'form': form, 'title': 'Invoice - IMS', 'invoice_data': invoiceData}
+#     return render(request, 'invoice.html', context)
+
+    
+
+def generateInvoice():
+    newinvoice = Invoices.objects.create()
+    
+    return redirect 
+    
+def invoice(request, pk):
+
+

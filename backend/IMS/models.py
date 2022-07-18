@@ -3,7 +3,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class Suppliers(models.Model):
     supplier_name = models.CharField(max_length=100)
     supplier_number = models.IntegerField(default=0)
@@ -30,14 +29,7 @@ class Purchases(models.Model):
     #     return self.product_id_id
 
 
-class Invoice_details(models.Model):
-    invoice_id = models.ForeignKey('Invoices', on_delete=models.CASCADE)
-    product_id = models.ForeignKey('Products', on_delete=models.CASCADE)
-    ordered_quantity = models.IntegerField(default=1)
-    line_total = models.FloatField(default=1.0)
-    # def __str__(self):
-    #     return self.product_id_id
-   
+ 
     
 
 class Customers(models.Model):
@@ -51,3 +43,11 @@ class Invoices(models.Model):
     invoice_date = models.DateField(auto_now=True)
     customer_id = models.ForeignKey('Customers', on_delete=models.CASCADE)
     total = models.FloatField(default=1.0)
+
+class Invoice_details(models.Model):
+    invoice_id = models.ForeignKey('Invoices', on_delete=models.CASCADE)
+    product_id = models.ForeignKey('Products', on_delete=models.CASCADE)
+    ordered_quantity = models.IntegerField(default=1)
+    line_total = models.FloatField(default=1.0)
+    # def __str__(self):
+    #     return self.product_id_id

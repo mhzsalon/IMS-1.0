@@ -10,6 +10,10 @@
               </div>
                 <div class="input-list">
                   <div class="input_field">
+                    <label for="price">Invoice ID:</label>
+                    {{ form.invoice_id }}
+                  </div>
+                  <div class="input_field">
                     <label for="price">Product ID:</label>
                     {{ form.product_id }}
                   </div>
@@ -30,12 +34,11 @@
                   </div>
               </form>
         </div>
-
-
-
-        yo chai naya vaggggg
-
-
+        <div class="formGenerate">
+          <form action="{% url 'generateInvoice' %}" method="POST">
+            <input type="button" value="GenerateInvoice" class="add" />                
+          </form>
+        </div>
         <div class="invoiceTable">
             <table id="example" class="table table-striped" style="width:100%">
               <thead>
