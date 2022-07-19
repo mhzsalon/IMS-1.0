@@ -91,8 +91,8 @@
                 <div class="profile-image">
                     <img src="../images/1.jpg" alt="">
                 </div>
-                
-                <span >Lakhan Thapa</span>
+
+                <span>Lakhan Thapa</span>
             </div>
         </div>
 
@@ -106,11 +106,11 @@
 
             <div class="user-info">
                 <span>Lakhan Thapa</span>
-            <p>lakhanthapa@gmail.com</p>
+                <p>lakhanthapa@gmail.com</p>
             </div>
         </div>
-        
-       <div class="edit-profile"> <i class="fas fa-pen"></i> Edit profile</div>
+
+        <div class="edit-profile"> <i class="fas fa-pen"></i> Edit profile</div>
 
         <div class="dropdown-list">
             <ul>
@@ -120,7 +120,7 @@
                         <span>Account</span>
                     </a>
                 </li>
-    
+
                 <!-- <li class="dropdown-menu">
                     <hr>
                 </li>
@@ -131,11 +131,11 @@
                         <span>Settings</span>
                     </a>
                 </li>
-    
+
                 <!-- <li class="dropdown-menu">
                     <hr>
                 </li> -->
-    
+
                 <li class="dropdown-menu">
                     <a href="accountSettings.html">
                         <i class="fas fa-sign-out"></i>
@@ -146,51 +146,85 @@
 
         </div>
 
-       
+
     </div>
 
     <div id="main">
-        <p>hello</p> 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Distinctio culpa unde tempore enim! Accusantium veniam et
-            perferendis unde iste nisi fugiat
-            earum vero tempora, in omnis quibusdam, ea non error.</p>
+        <div class="invoiceForm">
+            <form method="POST">
+                <!-- {% csrf_token %} -->
 
-        <h1>hahuahsuah</h1>
+                <div class="form-title">
+                    <p>Add Invoice</p>
+                </div>
+                <div class="input_field">
+                    <label for="price">Invoice ID:</label>
+                    <!-- {{ form.invoice_id }} -->
+                    <input type="text">
+                </div>
+                <div class="input-list">
+                    <div class="input_field">
+                        <label for="price">Product ID:</label>
+                        <!-- {{ form.product_id }} -->
+                        <input type="text">
+                    </div>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Distinctio culpa unde tempore enim! Accusantium veniam et
-            perferendis unde iste nisi fugiat
-            earum vero tempora, in omnis quibusdam, ea non error.</p>
+                    <div class="input_field">
+                        <label for="quantity">Quantity:</label>
+                        <!-- {{ form.ordered_quantity }} -->
+                        <input type="text">
+                    </div>
 
-        <h1>hahuahsuah</h1>
+                    <div class="input_field">
+                        <label for="supplier_ID">Unit Price:</label>
+                        <!-- {{ form.line_total }} -->
+                        <input type="text">
+                    </div>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Distinctio culpa unde tempore enim! Accusantium veniam et
-            perferendis unde iste nisi fugiat
-            earum vero tempora, in omnis quibusdam, ea non error.</p>
+                    <div class="input_field">
+                        <label for="supplier_ID">Line Total:</label>
+                        <!-- {{ form.line_total }} -->
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <input type="button" value="Show More" class="add" />
+                    <input type="button" value="Show Less" class="add" />
+                    <input type="submit" value="Add" class="add" />
+                    <input type="button" value="Cancel" class="add" />
+                </div>
+            </form>
+        </div>
 
-        <h1>hahuahsuah</h1>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Distinctio culpa unde tempore enim! Accusantium veniam et
-            perferendis unde iste nisi fugiat
-            earum vero tempora, in omnis quibusdam, ea non error.</p>
+        <!-- <div class="invoiceTable">
+            <table id="example" class="table table-striped" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>SN</th>
+                  <th>Product</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for invoice in invoice_data %}
+                <tr>
+                  <td>{{ invoice.invoice_id_id }}</td>
+                  <td>{{ invoice.product_id}}</td>
+                  <td>{{ invoice.ordered_quantity}}</td>
+                  <td>{{ invoice.line_total}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div> -->
 
-        <h1>hahuahsuah</h1>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Distinctio culpa unde tempore enim! Accusantium veniam et
-            perferendis unde iste nisi fugiat
-            earum vero tempora, in omnis quibusdam, ea non error.</p>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
-        <h1>hahuahsuah</h1>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Distinctio culpa unde tempore enim! Accusantium veniam et
-            perferendis unde iste nisi fugiat
-            earum vero tempora, in omnis quibusdam, ea non error.</p>
-         
     </div>
     <script src="../main.js"></script>
 
