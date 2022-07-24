@@ -1,60 +1,76 @@
-{% extends 'index.html' %}
+{% extends 'index.html' %} {% block content %}
 
-{% block content %}
-        <div class="invoiceForm">
-            <form method="POST">
-                {% csrf_token %}
+{% comment %} <div class="formGenerate">
+  <form action="{% url 'route:generateInvoice' %}" method="POST">
+    {% csrf_token %}
+    <input
+      type="submit"
+      value="Generate Invoice"
+      class="add"
+      style="width: 150px; height: 50px"
+    />
+  </form>
+</div> {% endcomment %}
 
-              <div class="form-title">
-                <p>Add Invoice</p>
-              </div>
-                <div class="input-list">
-                  <div class="input_field">
-                    <label for="price">Product ID:</label>
-                    {{ form.product_id }}
-                  </div>
-            
-                  <div class="input_field">
-                    <label for="quantity">Quantity:</label>
-                    {{ form.ordered_quantity }}        
-                  </div>
+<div class="invoiceForm">
+  <form method="POST" action = "{% url 'route:invoice' %}">
+    {% csrf_token %}
 
-                  <div class="input_field">
-                    <label for="supplier_ID">Price:</label>
-                    {{ form.line_total }}        
-                  </div>
-                </div>
-                  <div class="buttons">
-                    <input type="submit" value="Add" class="add" />
-                    <input type="button" value="Cancel" class="add" />
-                  </div>
-              </form>
-        </div>
-        <div class="invoiceTable">
-            <table id="example" class="table table-striped" style="width:100%">
-              <thead>
-                <tr>
-                  <th>SN</th>
-                  <th>Product</th>
-                  <th>Quantity</th>
-                  <th>Unit Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for invoice in invoice_data %}
-                <tr>
-                  <td>{{ invoice.invoice_id_id }}</td>
-                  <td>{{ invoice.product_id}}</td>
-                  <td>{{ invoice.ordered_quantity}}</td>
-                  <td>{{ invoice.line_total}} </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
+    <div class="form-title">
+      <p>Add Invoice</p>
+    </div>
+    <div class="input-list">
+      {% comment %} <div class="input_field">
+        <label for="price">Invoice ID:</label>
+        {{ form.invoice_id }}
+      </div> {% endcomment %}
+      <div class="input_field">
+        <label for="price">Product ID:</label>
+        {{ form.product_id }}
+      </div>
 
-          <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-          <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-          <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+      <div class="input_field">
+        <label for="quantity">Quantity:</label>
+        {{ form.ordered_quantity }}
+      </div>
+
+      <div class="input_field">
+        <label for="supplier_ID">Price:</label>
+        {{ form.line_total }}
+      </div>
+    </div>
+    <div class="buttons">
+      <input type="submit" value="Add" class="add" />
+      <input type="button" value="Cancel" class="add" />
+    </div>
+  </form>
+</div>
+
+<div class="invoiceTable">
+  <table id="example" class="table table-striped" style="width: 100%">
+    <thead>
+      <tr>
+        <th>SN</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for invoice in invoice_data %}
+      <tr>
+        <td>{{ invoice.invoice_id_id }}</td>
+        <td>{{ invoice.product_id}}</td>
+        <td>{{ invoice.ordered_quantity}}</td>
+        <td>{{ invoice.line_total}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
 {% endblock %}
