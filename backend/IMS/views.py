@@ -48,7 +48,7 @@ def dashboard(request):
 
 
 def products(request):
-    form = addProductForm() 
+    form = addProductForm()
 
     if request.method == "POST":
         form = addProductForm(request.POST)
@@ -65,6 +65,7 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+
 def purchase(request):
     form = addPurchaseForm()
 
@@ -73,10 +74,12 @@ def purchase(request):
         if form.is_valid():
             form.save()
             return redirect('../purchase/')
-    
+
     purchaseData = Purchases.objects.all()
-    context = {'form': form, 'title': 'Purchase - IMS', 'purchase_data': purchaseData}
+    context = {'form': form, 'title': 'Purchase - IMS',
+               'purchase_data': purchaseData}
     return render(request, 'purchase.html', context)
+
 
 def supplier(request):
     form = addSupplierForm()
@@ -86,57 +89,49 @@ def supplier(request):
         if form.is_valid():
             form.save()
             return redirect('../suppliers/')
-    
+
     supplierData = Suppliers.objects.all()
-    context = {'form': form, 'title': 'Supplier - IMS', 'supplier_data': supplierData}
+    context = {'form': form, 'title': 'Supplier - IMS',
+               'supplier_data': supplierData}
     return render(request, 'supplier.html', context)
 
+
+def generateInvoice(request):
+    if request.method == 'POST':
+        newinvoice = Invoices.objects.create()
+        new_id = newinvoice.id
+        context = {'new_id': new_id}
+    return render(request, 'generate_invoice.html', context)
+
+
 # def invoice(request):
-#     form = addInvoiceForm()
-#     mainForm =formGenerate()
-#     if request.method == 'POST':
-#         print("I am here")
-#         form = addInvoiceForm(request.POST)
-#         print("I am here 2")
-
-#         #creating invoices
-
-#         # all_cus_details = Customers.objects.all()
-
-#         # for i in all_cus_details:
-#         #     print(i)
-#         #     print("The id are: ",i.id)
-
-#         # for i in all_cus_details:
-#         #     Invoices.objects.create(
-#         #         invoice_date = datetime.now(),
-#         #         customer_id = id,
-#         #         total = 1.0,
-#         #     )
-#         # all_cus_details = Invoices.objects.all()
-
-#         # for i in all_cus_details:
-#         #     Invoice_details.objects.create(
-#         #         invoice_id=i.id
-#         #     )
-#         #     # print(i.id)
-#         if form.is_valid(): 
-            
-#             print("I am here 3")
-#             form.save()
-#             return redirect('../invoice/')
-    
-#     invoiceData = Invoice_details.objects.all()
-#     context = {'form': form, 'title': 'Invoice - IMS', 'invoice_data': invoiceData}
-#     return render(request, 'invoice.html', context)
-
-    
-
-def generateInvoice():
-    newinvoice = Invoices.objects.create()
-    
-    return redirect 
-    
-def invoice(request, pk):
+#     form = addInvoiceForm(request.POST)
+#     new_invoice_detail = Invoice_details.object.create(invoice_id=20)
 
 
+
+def invoice(request):
+    form = addInvoiceForm()
+    new_invoice = Invoices.objects.latest('id')
+    print(new_invoice)
+    new_id = new_invoice.id + 1
+    if request.method == 'POST':
+        newinvoice = Invoices.objects.create()
+        new_id = newinvoice.id
+        context = {'new_id': new_id}
+
+        form = addInvoiceForm(request.POST)
+        if form.is_valid():
+            new_invoice_detail = Invoice_details.object.create(invoice_id=new_id)
+            print("i am here")
+            form.invoice_id
+            form.save()
+            return redirect('../invoice/')
+
+    invoiceData = Invoice_details.objects.filter(invoice_id=new_id)
+    context = {'form': form, 'title': 'Invoice - IMS',
+                   'invoice_data': invoiceData
+                   }
+    return render(request, 'invoice.html', context)
+
+# def invoice(request, pk):

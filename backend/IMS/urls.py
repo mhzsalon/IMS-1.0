@@ -11,5 +11,5 @@ urlpatterns = [
     path('suppliers/', views.supplier, name="supplier"),
     path('invoice/', views.invoice, name="invoice"),
     path('', views.login, name="login"),
-    path('invoice/', views.generateInvoice, name="generateInvoice"),
+    path('generateInvoice/', views.generateInvoice, name="generateInvoice"),
 ]

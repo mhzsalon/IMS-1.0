@@ -8,4 +8,3 @@ admin.site.register(Purchases)
 admin.site.register(Invoice_details)
 admin.site.register(Customers)
 admin.site.register(Invoices)
-

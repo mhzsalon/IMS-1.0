@@ -13,6 +13,10 @@
 /* Stylesheet for sliding navigation bar.  */
 
 /* new sidebar */
+.nav-link:hover{
+  all: unset;
+  opacity: 70% !important;
+}
 
 aside {
   display: block;

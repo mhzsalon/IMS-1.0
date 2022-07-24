@@ -26,11 +26,7 @@ class Purchases(models.Model):
     quantity = models.IntegerField(default=1)
     purchase_price = models.FloatField(default=1.0)
     # def __str__(self):
-    #     return self.product_id_id
-
-
- 
-    
+    #     return self.product_id_id   
 
 class Customers(models.Model):
     customer_name = models.CharField(max_length=100)
@@ -41,7 +37,7 @@ class Customers(models.Model):
 
 class Invoices(models.Model): 
     invoice_date = models.DateField(auto_now=True)
-    customer_id = models.ForeignKey('Customers', on_delete=models.CASCADE)
+    # customer_name = models.CharField(max_length=100)
     total = models.FloatField(default=1.0)
 
 class Invoice_details(models.Model):
