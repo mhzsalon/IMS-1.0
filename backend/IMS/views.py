@@ -1,5 +1,6 @@
 
 from datetime import datetime
+from itertools import product
 from multiprocessing import context
 from urllib import request
 from xmlrpc.client import DateTime
@@ -97,10 +98,13 @@ def supplier(request):
 
 
 def generateInvoice(request):
+    form = addInvoiceForm()
+    new_id = Invoices.objects.latest('id').id
     if request.method == 'POST':
         newinvoice = Invoices.objects.create()
         new_id = newinvoice.id
-        context = {'new_id': new_id}
+
+    context = {'form': form, 'new_id': new_id}
     return render(request, 'generate_invoice.html', context)
 
 
@@ -116,22 +120,42 @@ def invoice(request):
     print(new_invoice)
     new_id = new_invoice.id + 1
     if request.method == 'POST':
-        newinvoice = Invoices.objects.create()
-        new_id = newinvoice.id
-        context = {'new_id': new_id}
-
         form = addInvoiceForm(request.POST)
+
+        # newinvoice = Invoices.objects.create()
+        # new_id = newinvoice.id
+        # context = {'new_id': new_id}
+        # prod = request.POST['product_id']
+        # qty = request.POST['ordered_quantity']
+        # line = request.POST['line_total']
+        # print("////-----------------------")
+        # print(prod)
+        # Invoice_details.objects.create(invoice_id=new_invoice, product_id_id=prod, ordered_quantity=qty, line_total=line)
+        # return redirect('../invoice/')
+
         if form.is_valid():
-            new_invoice_detail = Invoice_details.object.create(invoice_id=new_id)
-            print("i am here")
-            form.invoice_id
-            form.save()
-            return redirect('../invoice/')
+            # new_invoice_detail = Invoice_details.object.create(invoice_id=new_id)
+            # id = Invoices.objects.get(id=new_invoice)
+            instance = form.save(commit=False)
+            instance.invoice_id = new_invoice
+            instance.save()
 
-    invoiceData = Invoice_details.objects.filter(invoice_id=new_id)
-    context = {'form': form, 'title': 'Invoice - IMS',
-                   'invoice_data': invoiceData
-                   }
-    return render(request, 'invoice.html', context)
+            return redirect('route:generateInvoice')
+        invoiceData = Invoice_details.objects.filter(invoice_id=new_invoice)
 
-# def invoice(request, pk):
+    else:
+        invoiceData = Invoice_details.objects.filter(invoice_id=new_id)
+        context = {'form': form, 'title': 'Invoice - IMS',
+                    'invoice_data': invoiceData
+                    }
+        return render(request, 'invoice.html', context)
+
+
+def cancel(request):
+    new_invoice = Invoices.objects.latest('id')
+    try:
+        new_invoice.delete()
+        return redirect('route:invoice')
+    except:
+        print("cannot delete____________________________________________")
+    return redirect('route:generateInvoice')

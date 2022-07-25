@@ -20,4 +20,4 @@ class addSupplierForm(ModelForm):
 class addInvoiceForm(ModelForm):
     class Meta:
         model = Invoice_details
-        fields = ['ordered_quantity', 'line_total', 'invoice_id', 'product_id']
+        fields = ['ordered_quantity', 'line_total', 'product_id']

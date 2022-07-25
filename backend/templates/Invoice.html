@@ -1,6 +1,6 @@
 {% extends 'index.html' %} {% block content %}
 
-{% comment %} <div class="formGenerate">
+<div class="formGenerate">
   <form action="{% url 'route:generateInvoice' %}" method="POST">
     {% csrf_token %}
     <input
@@ -10,9 +10,9 @@
       style="width: 150px; height: 50px"
     />
   </form>
-</div> {% endcomment %}
+</div>
 
-<div class="invoiceForm">
+<!-- <div class="invoiceForm">
   <form method="POST" action = "{% url 'route:invoice' %}">
     {% csrf_token %}
 
@@ -20,10 +20,10 @@
       <p>Add Invoice</p>
     </div>
     <div class="input-list">
-      {% comment %} <div class="input_field">
+      <div class="input_field">
         <label for="price">Invoice ID:</label>
         {{ form.invoice_id }}
-      </div> {% endcomment %}
+      </div> 
       <div class="input_field">
         <label for="price">Product ID:</label>
         {{ form.product_id }}
@@ -45,6 +45,7 @@
     </div>
   </form>
 </div>
+ -->
 
 <div class="invoiceTable">
   <table id="example" class="table table-striped" style="width: 100%">

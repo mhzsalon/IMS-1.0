@@ -41,7 +41,7 @@ class Invoices(models.Model):
     total = models.FloatField(default=1.0)
 
 class Invoice_details(models.Model):
-    invoice_id = models.ForeignKey('Invoices', on_delete=models.CASCADE)
+    invoice_id = models.ForeignKey('Invoices',  on_delete=models.PROTECT)
     product_id = models.ForeignKey('Products', on_delete=models.CASCADE)
     ordered_quantity = models.IntegerField(default=1)
     line_total = models.FloatField(default=1.0)

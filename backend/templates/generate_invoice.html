@@ -1,36 +1,41 @@
 {% extends 'index.html' %} {% block content %}
 
 <div class="invoiceForm">
-    <form method="POST">
-      {% csrf_token %}
   
-      <div class="form-title">
-        <p>Add Invoice</p>
+  <form method="POST" action = "{% url 'route:invoice' %}">
+    {% csrf_token %}
+
+    <div class="form-title">
+      <p>Add Invoice</p>
+    </div>
+    {% comment %} <div class="input-list">
+      <div class="input_field">
+        <label for="price">Invoice ID:</label>
+        {{ form.invoice_id }}
+      </div> {% endcomment %}
+      <div class="input_field">
+        <label for="price">Product ID:</label>
+        {{ form.product_id }}
       </div>
-      <div class="input-list">
-        {% comment %} <div class="input_field">
-          <label for="price">Invoice ID:</label>
-          {{ form.invoice_id }}
-        </div> {% endcomment %}
-        <div class="input_field">
-          <label for="price">Product ID:</label>
-          {{ form.product_id }}
-        </div>
-  
-        <div class="input_field">
-          <label for="quantity">Quantity:</label>
-          {{ form.ordered_quantity }}
-        </div>
-  
-        <div class="input_field">
-          <label for="supplier_ID">Price:</label>
-          {{ form.line_total }}
-        </div>
+
+      <div class="input_field">
+        <label for="quantity">Quantity:</label>
+        {{ form.ordered_quantity }}
       </div>
-      <div class="buttons">
-        <input type="submit" value="Add" class="add" />
-        <input type="button" value="Cancel" class="add" />
+
+      <div class="input_field">
+        <label for="supplier_ID">Price:</label>
+        {{ form.line_total }}
       </div>
-    </form>
-  </div>
+    </div>
+    <div class="buttons">
+      <input type="submit" value="Add" class="add" />
+    </div>
+  </form>
+  <form action="{% url 'route:cancel' %}" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Cancel" class="add" />
+  </form>
+</div> 
 {% endblock %}
