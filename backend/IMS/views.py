@@ -160,6 +160,7 @@ def cancel(request):
     except:
         print("cannot delete____________________________________________")
     return redirect('route:generateInvoice')
+<<<<<<< Updated upstream
 
 
 def createReceipts():
@@ -197,3 +198,6 @@ def save(request):
     file_path = "Receipt.txt"
     os.startfile(file_path, 'print')
     return redirect("route:invoice")
+=======
+    
+>>>>>>> Stashed changes
