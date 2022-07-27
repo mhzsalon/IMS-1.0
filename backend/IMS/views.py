@@ -10,6 +10,7 @@ from django.contrib import messages
 
 from .models import Customers, Invoice_details, Invoices, Products, Purchases, Suppliers
 from .forms import addInvoiceForm, addProductForm, addPurchaseForm, addSupplierForm
+import os
 
 # Create your views here.
 
@@ -159,3 +160,40 @@ def cancel(request):
     except:
         print("cannot delete____________________________________________")
     return redirect('route:generateInvoice')
+
+
+def createReceipts():
+    store_name= "ABC Super Market"
+    location = "Kathmandu, Nepal"
+    store_tel = "01-3425342"
+    bill_no = Invoices.objects.latest('id')
+    date = Invoices.objects.latest('invoice_date')
+
+    print("--------------------------------")
+    print(bill_no.id)
+    print(date.invoice_date)
+    receipt = open(f"Receipt.txt", "w+")
+    receipt.write(f"\t\t{store_name.title()}\n")
+    receipt.write(f"\t\t{location}\n")
+    receipt.write(f"\t\t{store_tel}\n\n\n")
+
+    receipt.write(f"Bill no: {bill_no.id}\n")
+    receipt.write(f"Date: {date.invoice_date}\n")
+
+    receipt.write("-" * 47)
+    receipt.write(f"\nParticular \t\t Qty \t Rate \t Amount\n")
+    receipt.write("-" * 47)
+
+    invoice = Invoice_details.objects.filter(invoice_id=bill_no)
+    for product in invoice:
+        receipt.write(f"\n{product.product_id} \t\t {product.ordered_quantity} \t {product.line_total} \t {product.ordered_quantity * product.line_total}")
+
+    receipt.write(f"\n" + "-" * 47)
+    receipt.close()
+
+
+def save(request):
+    createReceipts()
+    file_path = "Receipt.txt"
+    os.startfile(file_path, 'print')
+    return redirect("route:invoice")

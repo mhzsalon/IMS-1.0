@@ -37,5 +37,11 @@
 
     <input type="submit" value="Cancel" class="add" />
   </form>
+
+  <form action="{% url 'route:save' %}" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Save" class="add" />
+  </form>
 </div> 
 {% endblock %}

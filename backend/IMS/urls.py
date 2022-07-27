@@ -12,5 +12,6 @@ urlpatterns = [
     path('invoice/', views.invoice, name="invoice"),
     path('', views.login, name="login"),
     path('generateInvoice/', views.generateInvoice, name="generateInvoice"),
-    path('cancel', views.cancel, name="cancel")
+    path('cancel', views.cancel, name="cancel"),
+    path('save', views.save, name="save"),
 ]
